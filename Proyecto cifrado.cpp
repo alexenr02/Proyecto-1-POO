@@ -3,7 +3,6 @@
 #include<math.h>
 #include<stdio.h>
 
-
 using namespace std;
 
 int main()
@@ -13,8 +12,8 @@ int main()
     archivoEntrada.open("entrada2.txt");
     archivoSalida.open("datosSalida.txt");
     string codex;
-    string num1, operador, num2,num3,num4;
-    int y,mayor,z,num1acum,num11,resultado222,x,longitudNum2,longitudNum1, num22, resultado,tam1,tam2;
+    string num1, operador, num2;
+    int y,mayor,z,num1acum,x,longitudNum2,longitudNum1;
     while(getline(archivoEntrada,codex))
         {
 
@@ -195,22 +194,22 @@ int main()
                */
                                 if(operador=="+") //Serie de discriminantes para poder hacer la operación con los enteros. Identifica que simbolo tiene el string y reemplaza la operación por la operación correspondiente.
                                 {
-                                    cout << endl << num1acum << operador  << num2acum << " = " << num1acum+num2acum;
+                                    //cout << endl << num1acum << operador  << num2acum << " = " << num1acum+num2acum;
                                     archivoSalida<< num1acum << operador << num2acum << " = " << num1acum+num2acum << endl;
                                 }
                                 if(operador=="-")
                                 {
-                                    cout << endl << num1acum << operador  << num2acum << " = " << num1acum-num2acum;
+                                    //cout << endl << num1acum << operador  << num2acum << " = " << num1acum-num2acum;
                                     archivoSalida<< num1acum << operador << num2acum << " = " << num1acum-num2acum << endl;
                                 }
                                 if(operador=="*")
                                 {
-                                    cout << endl << num1acum << operador  << num2acum << " = " << num1acum*num2acum;
+                                    //cout << endl << num1acum << operador  << num2acum << " = " << num1acum*num2acum;
                                     archivoSalida<< num1acum << operador << num2acum << " = " << num1acum*num2acum << endl;
                                 }
                                 if(operador=="/")
                                 {
-                                    cout << endl << num1acum << operador  << num2acum << " = " << num1acum/num2acum;
+                                    //cout << endl << num1acum << operador  << num2acum << " = " << num1acum/num2acum;
                                     archivoSalida<< num1acum << operador << num2acum << " = " << num1acum/num2acum << endl;
                                 }
 
