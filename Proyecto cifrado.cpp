@@ -1,25 +1,36 @@
 #include <iostream>
 #include<fstream>
 #include<math.h>
+#include<string>
 #include<stdio.h>
 
 using namespace std;
 
 int main()
 {
+    string codex;
+    string num1, operador, num2, nombreArchEntrada, nombreArchSalida;
+    int y,mayor,z,x,longitudNum2,longitudNum1;
     ifstream archivoEntrada;
     ofstream archivoSalida;
-    archivoEntrada.open("entrada2.txt");
-    archivoSalida.open("datosSalida.txt");
-    string codex;
-    string num1, operador, num2;
-    int y,mayor,z,num1acum,x,longitudNum2,longitudNum1;
+
+
+    cout << "Teclea el nombre del archivo de entrada:" << "\t";
+    cin >>nombreArchEntrada;
+    cout << endl;
+    cout << "Teclea el nombre del archivo que contendra las operaciones cifradas:" << "\t";
+    cin >>nombreArchSalida;
+    cout << endl;
+
+    archivoEntrada.open(nombreArchEntrada.c_str());
+    archivoSalida.open(nombreArchSalida.c_str());
+
     while(getline(archivoEntrada,codex))
         {
 
             while(archivoEntrada>> num1 >> operador >> num2){
-                longitudNum1=num1.length(); // estas dos lineas sirven para saber cuál es el temaño de la primera y segunda cifra en cada linea
-                longitudNum2=num2.length();
+                longitudNum1=num1.size(); // estas dos lineas sirven para saber cuál es el temaño de la primera y segunda cifra en cada linea
+                longitudNum2=num2.size();
 
                 if(longitudNum1>=longitudNum2) //me identifica cuantas veces se tiene que repetir el reeemplazo de cada simbolo por un digito (string) para que se cambien todos
                 {
@@ -170,28 +181,31 @@ int main()
                   }
                 }//llave que cierra el ciclo para que decodifique todos los digitos
 
-                num1acum=0; //empieza la conversión de caracteres a digitos
+                double num1acum=0; //empieza la conversión de caracteres a digitos
                 int g,v;
-                for(( g=0, v=longitudNum1-1); (g<longitudNum1,v>=0);(g++,v--)){ //este ciclo me sirve para convertir la primer cifra string a enteros.
+                for((   g=0, v=num1.size()-1); (g<num1.size(),v>=0);(g++,v--)){ //este ciclo me sirve para convertir la primer cifra string a enteros.
                         num1acum+=((num1[g]-48)*pow(10,v)); //este es el algoritmo. Funciona sabiendo que un numero es una suma de una base elevado a cada posición.
                 }
-                int num2acum=0;
+                double num2acum=0;
                 int r,w;
-                for(( r=0, w=longitudNum2-1); (r<longitudNum2,w>=0);(r++,w--)){//este ciclo me sirve para convertir la segunda cifra string a enteros.
+                for(( r=0, w=num2.size()-1); (r<num2.size(),w>=0);(r++,w--)){//este ciclo me sirve para convertir la segunda cifra string a enteros.
                         num2acum+=((num2[r]-48)*pow(10,w));
                 }
-               /* for(int a=0;a<longitudNum1;a++)
+                /*
+               for(int a=0;a<num1.size();a++)
                     {
                         cout << num1[a];             //Este ciclo me sirvió para comparar el numero original caracter con el numero entero generado
                     }
 
                     cout <<" " << operador << " ";
 
-                   for(int f=0;f<longitudNum2;f++)
+                   for(int f=0;f<num2.size();f++)
                     {
                         cout << num2[f];
                     }
-               */
+                    */
+
+
                                 if(operador=="+") //Serie de discriminantes para poder hacer la operación con los enteros. Identifica que simbolo tiene el string y reemplaza la operación por la operación correspondiente.
                                 {
                                     //cout << endl << num1acum << operador  << num2acum << " = " << num1acum+num2acum;
@@ -212,11 +226,6 @@ int main()
                                     //cout << endl << num1acum << operador  << num2acum << " = " << num1acum/num2acum;
                                     archivoSalida<< num1acum << operador << num2acum << " = " << num1acum/num2acum << endl;
                                 }
-
-
-
-
-
                                 cout << endl;//comando para saltar de linea y lea una nueva operación
 
 
